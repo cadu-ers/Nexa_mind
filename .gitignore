@@ -1,54 +1,27 @@
-# ======================
-# Node / JavaScript
-# ======================
 node_modules/
 .pnp
 .pnp.js
-
-# ======================
-# Build / Output
-# ======================
 dist/
 build/
 .next/
 out/
 coverage/
-
-# ======================
-# Environment Variables
-# ======================
-.env*
-
-# ======================
-# Logs
-# ======================
+.env
 *.log
 logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
-
-# ======================
-# Python
-# ======================
 __pycache__/
 *.py[cod]
 *$py.class
 venv/
 .venv/
 env/
-
-# ======================
-# IDEs / Editors
-# ======================
 .vscode/
 .idea/
 *.swp
 *.swo
-
-# ======================
-# OS
-# ======================
 .DS_Store
 Thumbs.db

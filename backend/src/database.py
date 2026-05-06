@@ -1,8 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+import os
 
-DATABASE_URL = "postgresql+psycopg2://postgres:24110129@localhost:5432/nexamind"
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(DATABASE_URL)
-
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
