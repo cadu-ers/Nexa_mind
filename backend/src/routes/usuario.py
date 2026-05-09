@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from ..dependencies import get_db
 from ..schemas.usuario import UsuarioCreate, UsuarioResponse
-from ..services.usuario_service import criar_usuario
+from ..services.user_service import criar_usuario
 
 router = APIRouter()
 
