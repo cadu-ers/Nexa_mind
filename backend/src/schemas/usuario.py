@@ -22,3 +22,11 @@ class UsuarioResponse(BaseModel):
     instituicao: Optional[str] = None
 
     model_config = ConfigDict(from_attributes=True)
+
+class UsuarioUpdate(BaseModel):
+    nome: Optional[str] = Field(None, min_length=1, max_length=150)
+    data_nascimento: Optional[date] = None
+    curso: Optional[str] = Field(None, max_length=100)
+    instituicao: Optional[str] = Field(None, max_length=150)
+
+    model_config = ConfigDict(extra="forbid")
