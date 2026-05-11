@@ -1,13 +1,9 @@
 from sqlalchemy.orm import Session
-from ..models.flashcards import Flashcard
+from ..models.flashcard import Flashcard
 import uuid
 from datetime import datetime, timedelta
 
 def _calcular_proxima_revisao(acertos: int, erros: int) -> datetime:
-    """
-    Lógica simples de revisão espaçada:
-    Quanto mais acertos, mais dias até a próxima revisão.
-    """
     if erros > acertos:
         dias = 1
     elif acertos <= 2:
@@ -35,7 +31,6 @@ def listar_flashcards(db: Session, material_id: uuid.UUID):
     return db.query(Flashcard).filter(Flashcard.material_id == material_id).all()
 
 def listar_para_revisar(db: Session, material_id: uuid.UUID):
-    """Retorna apenas flashcards cuja revisão está pendente."""
     return db.query(Flashcard).filter(
         Flashcard.material_id == material_id,
         Flashcard.proxima_revisao <= datetime.utcnow()

@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from uuid import UUID
 from ..dependencies import get_db
 from ..schemas.usuario import UsuarioCreate, UsuarioUpdate, UsuarioResponse
-from ..services.user_service import criar_usuario, buscar_usuario, atualizar_usuario, deletar_usuario
+from ..services.usuario import criar_usuario, buscar_usuario, atualizar_usuario, deletar_usuario
 
 router = APIRouter()
 
