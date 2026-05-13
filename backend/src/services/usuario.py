@@ -1,20 +1,16 @@
 from sqlalchemy.orm import Session
-from passlib.context import CryptContext
-from ..models.user import Usuario
+import bcrypt
 import uuid
+from ..models.user import Usuario
 
-pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
+def _hash_senha(senha: str) -> str:
+    return bcrypt.hashpw(senha.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
-def criar_usuario(
-    db: Session,
-    nome: str,
-    email: str,
-    senha: str,
-    data_nascimento=None,
-    curso=None,
-    instituicao=None
-):
-    senha_hash = pwd.hash(senha)
+def _verificar_senha(senha: str, hash: str) -> bool:
+    return bcrypt.checkpw(senha.encode('utf-8'), hash.encode('utf-8'))
+
+def criar_usuario(db: Session, nome: str, email: str, senha: str, data_nascimento=None, curso=None, instituicao=None):
+    senha_hash = _hash_senha(senha)
     usuario = Usuario(
         nome=nome,
         email=email,

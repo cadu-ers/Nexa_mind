@@ -23,6 +23,5 @@ class Usuario(Base):
     data_cadastro: Mapped[datetime] = mapped_column(TIMESTAMP(timezone=True), default=datetime.utcnow)
     ativo: Mapped[bool] = mapped_column(Boolean, default=True)
 
-    # Relacionamentos
-   # disciplinas = relationship("Disciplina", back_populates="usuario", cascade="all, delete")
-    #sessoes = relationship("SessaoChat", back_populates="usuario", cascade="all, delete")
+    disciplinas = relationship("Disciplina", back_populates="usuario", cascade="all, delete")
+    sessoes = relationship("SessaoChat", back_populates="usuario", cascade="all, delete")
